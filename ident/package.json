@@ -1,0 +1,15 @@
+{
+  "name": "ident",
+  "version": "1.0.0",
+  "description": "Simple web-accessible service to return the pod and skupper site ids",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ted Ross",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "^4.17.2",
+    "rhea": "^3.0.0"
+  }
+}

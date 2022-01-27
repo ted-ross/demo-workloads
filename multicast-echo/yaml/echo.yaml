@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: multicast-echo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      application: multicast-echo
+  template:
+    metadata:
+      labels:
+        application: multicast-echo
+    spec:
+      containers:
+      - name: multicast-echo
+        image: docker.io/tedross/multicast-echo:latest
+        imagePullPolicy: Always
+        volumeMounts:
+        - mountPath: /etc/messaging/
+          name: skupper-local-client
+      volumes:
+      - name: skupper-local-client
+        secret:
+          secretName: skupper-local-client

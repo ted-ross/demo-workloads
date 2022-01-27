@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: multicast-ping
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      application: multicast-ping
+  template:
+    metadata:
+      labels:
+        application: multicast-ping
+    spec:
+      containers:
+      - name: multicast-ping
+        image: docker.io/tedross/multicast-ping:latest
+        imagePullPolicy: Always
+        volumeMounts:
+        - mountPath: /etc/messaging/
+          name: skupper-local-client
+      volumes:
+      - name: skupper-local-client
+        secret:
+          secretName: skupper-local-client

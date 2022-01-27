@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ident
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      application: ident
+  template:
+    metadata:
+      labels:
+        application: ident
+    spec:
+      containers:
+      - name: ident
+        image: docker.io/tedross/ident:latest
+        imagePullPolicy: Always
+        volumeMounts:
+        - mountPath: /etc/messaging/
+          name: skupper-local-client
+      volumes:
+      - name: skupper-local-client
+        secret:
+          secretName: skupper-local-client
