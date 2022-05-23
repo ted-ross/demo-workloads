@@ -68,7 +68,7 @@ amqp.on('receiver_open', function(context) {
             application_properties: {
                 operation  : 'QUERY',
                 type       : 'org.amqp.management',
-                entityType : 'org.apache.qpid.dispatch.router'
+                entityType : 'io.skupper.router.router'
             },
             body : {
                 attributeNames : ['name']
